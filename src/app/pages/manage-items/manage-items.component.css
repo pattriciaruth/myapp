@@ -43,3 +43,29 @@ button {
   margin-bottom: 10px;
   width: 350px;
 }
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+/* override the generic label style for the checkbox label */
+.checkbox-row label {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: left;
+  white-space: nowrap; /* stops things squishing together strangely */
+}

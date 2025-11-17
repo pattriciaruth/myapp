@@ -25,13 +25,14 @@
   <label>Supplier:</label>
   <input [(ngModel)]="supplier" />
 
-  <label>Stock Level (1–5):</label>
+  <label>Stock Level (1=Minimum, 5=Maximum):</label>
   <input type="number" min="1" max="5" [(ngModel)]="stockLevel" />
 
-  <label>
-    <input type="checkbox" [(ngModel)]="popular" />
-    Popular Item
-  </label>
+  <div class="checkbox-row">
+  <input id="popular" type="checkbox" [(ngModel)]="popular" />
+  <label for="popular">Popular Item</label>
+  </div>
+
 
   <label>Comment:</label>
   <textarea [(ngModel)]="comment"></textarea>
@@ -75,7 +76,7 @@
       <td>{{ item.name }}</td>
       <td>{{ item.category }}</td>
       <td>{{ item.quantity }}</td>
-      <td>\${{ item.price }}</td>
+      <td>${{ item.price }}</td>
       <td>{{ item.stockLevel }}</td>
       <td>
         <button (click)="startEdit(item)">Edit</button>
