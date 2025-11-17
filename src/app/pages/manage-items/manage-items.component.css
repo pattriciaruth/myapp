@@ -1,0 +1,45 @@
+.form-box {
+  background: #fafafa;
+  padding: 15px;
+  width: 350px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 8px;
+  display: block;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  margin-top: 4px;
+  padding: 6px;
+}
+
+button {
+  padding: 8px 14px;
+  margin-top: 12px;
+}
+
+.cancel {
+  background-color: #777;
+  color: white;
+  margin-left: 8px;
+}
+
+.delete {
+  background: crimson;
+  color: white;
+}
+
+.message {
+  background: #d4ffd4;
+  padding: 8px;
+  border: 1px solid #6fdd6f;
+  margin-bottom: 10px;
+  width: 350px;
+}

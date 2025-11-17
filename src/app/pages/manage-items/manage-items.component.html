@@ -1,1 +1,86 @@
-<p>manage-items works!</p>
+<h1>Manage Inventory</h1>
+
+<div class="message" *ngIf="message">{{ message }}</div>
+
+<div class="form-box">
+  <h3>{{ isEditing ? 'Edit Item' : 'Add New Item' }}</h3>
+
+  <label>Item ID:</label>
+  <input [(ngModel)]="itemId" />
+
+  <label>Name:</label>
+  <input [(ngModel)]="name" />
+
+  <label>Category:</label>
+  <select [(ngModel)]="category">
+    <option *ngFor="let c of categories">{{ c }}</option>
+  </select>
+
+  <label>Quantity:</label>
+  <input type="number" [(ngModel)]="quantity" min="0" />
+
+  <label>Price:</label>
+  <input type="number" min="0" [(ngModel)]="price" />
+
+  <label>Supplier:</label>
+  <input [(ngModel)]="supplier" />
+
+  <label>Stock Level (1–5):</label>
+  <input type="number" min="1" max="5" [(ngModel)]="stockLevel" />
+
+  <label>
+    <input type="checkbox" [(ngModel)]="popular" />
+    Popular Item
+  </label>
+
+  <label>Comment:</label>
+  <textarea [(ngModel)]="comment"></textarea>
+
+  <button (click)="isEditing ? saveEdit() : addItem()">
+    {{ isEditing ? 'Save Changes' : 'Add Item' }}
+  </button>
+
+  <button *ngIf="isEditing" class="cancel" (click)="resetForm()">Cancel</button>
+</div>
+
+<hr />
+
+<h2>Search Inventory</h2>
+<input placeholder="Search by name..." 
+       #searchInput
+       (input)="search(searchInput.value)" />
+
+
+<ul *ngIf="searchResults.length > 0">
+  <li *ngFor="let r of searchResults">{{ r.name }} ({{ r.category }})</li>
+</ul>
+
+<h2>All Items</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.itemId }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>\${{ item.price }}</td>
+      <td>{{ item.stockLevel }}</td>
+      <td>
+        <button (click)="startEdit(item)">Edit</button>
+        <button class="delete" (click)="deleteItem(item.name)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
