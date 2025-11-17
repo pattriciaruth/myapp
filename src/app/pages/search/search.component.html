@@ -1,4 +1,4 @@
-<section>
+<section class="page-card page-card--wide">
   <h1>Search &amp; Filter Inventory</h1>
 
   <div class="filters">
@@ -30,33 +30,36 @@
 
   <h2>Results</h2>
 
-  <table *ngIf="results.length > 0; else noResults">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Qty</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Popular</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of results">
-        <td>{{ item.itemId }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.category }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>\${{ item.price }}</td>
-        <td>{{ item.stockLevel }}</td>
-        <td>{{ item.popular ? 'Yes' : 'No' }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table *ngIf="results.length > 0; else noResults">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Popular</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of results">
+          <td>{{ item.itemId }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.price | currency: 'AUD':'symbol' }}</td>
+          <td>{{ item.stockLevel }} / 5</td>
+          <td>{{ item.popular ? 'Yes' : 'No' }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-  <ng-template #noResults>
-    <p>No items match the current filters.</p>
-  </ng-template>
+    <ng-template #noResults>
+      <p class="empty-note">No items match the current filters.</p>
+    </ng-template>
+  </div>
 </section>
+
 
