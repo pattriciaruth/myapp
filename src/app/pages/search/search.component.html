@@ -1,1 +1,62 @@
-<p>search works!</p>
+<section>
+  <h1>Search &amp; Filter Inventory</h1>
+
+  <div class="filters">
+    <div>
+      <label>Search by name:</label>
+      <input [(ngModel)]="nameTerm" (input)="applyFilters()" />
+    </div>
+
+    <div>
+      <label>Category:</label>
+      <select [(ngModel)]="selectedCategory" (change)="applyFilters()">
+        <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input
+          type="checkbox"
+          [(ngModel)]="popularOnly"
+          (change)="applyFilters()"
+        />
+        Popular items only
+      </label>
+    </div>
+
+    <button (click)="clearFilters()">Clear filters</button>
+  </div>
+
+  <h2>Results</h2>
+
+  <table *ngIf="results.length > 0; else noResults">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Popular</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of results">
+        <td>{{ item.itemId }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>\${{ item.price }}</td>
+        <td>{{ item.stockLevel }}</td>
+        <td>{{ item.popular ? 'Yes' : 'No' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noResults>
+    <p>No items match the current filters.</p>
+  </ng-template>
+</section>
+

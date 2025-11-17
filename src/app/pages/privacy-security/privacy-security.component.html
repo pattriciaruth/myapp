@@ -1,1 +1,51 @@
-<p>privacy-security works!</p>
+<section class="page">
+  <h1>Privacy &amp; Security</h1>
+
+  <p>
+    This inventory app was built for learning purposes in PROG2005. It does not
+    use any backend or database. All data is stored <strong>in memory only</strong>
+    while the page is open.
+  </p>
+
+  <h2>Data storage</h2>
+  <ul>
+    <li>
+      Items are kept in an in-memory TypeScript array inside an Angular
+      service.
+    </li>
+    <li>When the page is refreshed or closed, all inventory data is lost.</li>
+    <li>No information is sent to a server or external API.</li>
+  </ul>
+
+  <h2>Input validation &amp; safety</h2>
+  <ul>
+    <li>Required fields are checked in the form before adding items.</li>
+    <li>
+      Numeric values such as quantity, price and stock level are restricted to
+      sensible ranges.
+    </li>
+    <li>
+      Angular templates automatically escape text when it is displayed, which
+      helps prevent simple cross-site scripting (XSS) issues.
+    </li>
+  </ul>
+
+  <h2>Personal data</h2>
+  <ul>
+    <li>
+      The system is designed to track products only. It does not store user
+      accounts, passwords or customer details.
+    </li>
+    <li>
+      Because there is no login and no persistent storage, the privacy risks
+      are very low.
+    </li>
+  </ul>
+
+  <p>
+    In a real production system, a secure backend, authentication, HTTPS and
+    stronger input validation would be required. For this assignment,
+    <strong>client-side TypeScript and Angular validation</strong> are sufficient.
+  </p>
+</section>
+
