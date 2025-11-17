@@ -1,50 +1,47 @@
 <section class="page">
-  <h1>Privacy &amp; Security</h1>
+  <h1>Help</h1>
 
+  <h2>Overview</h2>
   <p>
-    This inventory app was built for learning purposes in PROG2005. It does not
-    use any backend or database. All data is stored <strong>in memory only</strong>
-    while the page is open.
+    This app helps a café or bakery staff member keep track of stock levels for
+    hot food, sweets, beverages and other items.
   </p>
 
-  <h2>Data storage</h2>
-  <ul>
+  <h2>Adding an item</h2>
+  <ol>
+    <li>Go to the <strong>Manage items</strong> page from the top menu.</li>
     <li>
-      Items are kept in an in-memory TypeScript array inside an Angular
-      service.
+      Fill in the form on the left: Item ID, Name, Category, Quantity, Price,
+      Supplier, Stock Level, and any comments.
     </li>
-    <li>When the page is refreshed or closed, all inventory data is lost.</li>
-    <li>No information is sent to a server or external API.</li>
-  </ul>
+    <li>Click <strong>Add Item</strong> to save it to the in-memory list.</li>
+  </ol>
 
-  <h2>Input validation &amp; safety</h2>
-  <ul>
-    <li>Required fields are checked in the form before adding items.</li>
-    <li>
-      Numeric values such as quantity, price and stock level are restricted to
-      sensible ranges.
-    </li>
-    <li>
-      Angular templates automatically escape text when it is displayed, which
-      helps prevent simple cross-site scripting (XSS) issues.
-    </li>
-  </ul>
+  <h2>Editing an item</h2>
+  <ol>
+    <li>On the Manage items page, find the item in the table.</li>
+    <li>Click <strong>Edit</strong> to load the values back into the form.</li>
+    <li>Change the values and click <strong>Save Changes</strong>.</li>
+  </ol>
 
-  <h2>Personal data</h2>
-  <ul>
+  <h2>Deleting an item</h2>
+  <ol>
+    <li>On the Manage items page, locate the item.</li>
+    <li>Click <strong>Delete</strong> and confirm the prompt.</li>
+  </ol>
+
+  <h2>Searching and filtering</h2>
+  <ol>
+    <li>Go to the <strong>Search &amp; filter</strong> page.</li>
     <li>
-      The system is designed to track products only. It does not store user
-      accounts, passwords or customer details.
+      Type part of a name, choose a category or tick
+      <strong>Popular items only</strong>.
     </li>
-    <li>
-      Because there is no login and no persistent storage, the privacy risks
-      are very low.
-    </li>
-  </ul>
+    <li>The results table updates instantly based on the current filters.</li>
+  </ol>
 
   <p>
-    In a real production system, a secure backend, authentication, HTTPS and
-    stronger input validation would be required. For this assignment,
-    <strong>client-side TypeScript and Angular validation</strong> are sufficient.
+    Remember that this is a training app: all data is cleared when the browser
+    tab is closed or refreshed.
   </p>
 </section>
