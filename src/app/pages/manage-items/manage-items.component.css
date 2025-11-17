@@ -43,18 +43,26 @@ button {
   margin-bottom: 10px;
   width: 350px;
 }
+/* force checkbox + label to stay on one clean row */
 .checkbox-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 8px;
 }
 
-/* override the generic label style for the checkbox label */
+/* ensure labels don't float far right */
 .checkbox-row label {
-  margin-top: 0;
+  margin: 0;
   font-weight: 600;
 }
+
+/* If your layout uses table-like rows, force full width */
+.form-row {
+  width: 100%;
+  display: block;
+}
+
 
 table {
   margin-top: 20px;
@@ -69,3 +77,4 @@ td {
   text-align: left;
   white-space: nowrap; /* stops things squishing together strangely */
 }
+
