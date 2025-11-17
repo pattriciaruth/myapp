@@ -43,7 +43,7 @@ button {
   margin-bottom: 10px;
   width: 350px;
 }
-/* force checkbox + label to stay on one clean row */
+/* Make the checkbox + text sit nicely on one line */
 .checkbox-row {
   display: flex;
   align-items: center;
@@ -51,17 +51,17 @@ button {
   margin-top: 8px;
 }
 
-/* ensure labels don't float far right */
+/* Override the global label style just for this row */
 .checkbox-row label {
-  margin: 0;
-  font-weight: 600;
+  display: inline;
+  margin-top: 0;
 }
 
-/* If your layout uses table-like rows, force full width */
-.form-row {
-  width: 100%;
-  display: block;
+/* Checkbox itself shouldn't be stretched full width */
+.checkbox-row input {
+  width: auto;
 }
+
 
 
 table {
