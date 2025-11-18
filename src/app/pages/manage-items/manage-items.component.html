@@ -6,7 +6,18 @@
     <div class="form-box">
       <h3>{{ isEditing ? 'Edit Item' : 'Add New Item' }}</h3>
 
-      <div class="message" *ngIf="message">{{ message }}</div>
+      <!-- Error + validation messages -->
+      <div *ngIf="errorMessage || validationErrors.length" class="banner error">
+        <strong>{{ errorMessage || 'Please fix the issues below:' }}</strong>
+        <ul *ngIf="validationErrors.length">
+          <li *ngFor="let err of validationErrors">{{ err }}</li>
+        </ul>
+      </div>
+
+      <!-- Success message -->
+      <div *ngIf="successMessage" class="banner success">
+        {{ successMessage }}
+      </div>
 
       <label>Item ID:</label>
       <input [(ngModel)]="itemId" />
@@ -81,6 +92,32 @@
         </p>
       </div>
 
+      <!-- Sort + low stock filter -->
+      <div class="table-toolbar">
+        <div class="toolbar-group">
+          <label>Sort by:</label>
+          <select [(ngModel)]="sortOption" (change)="onSortChange()">
+            <option value="name-asc">Name (A–Z)</option>
+            <option value="name-desc">Name (Z–A)</option>
+            <option value="price-asc">Price (low → high)</option>
+            <option value="price-desc">Price (high → low)</option>
+            <option value="stock-asc">Stock (low → high)</option>
+            <option value="stock-desc">Stock (high → low)</option>
+          </select>
+        </div>
+
+        <div class="toolbar-group">
+          <label class="low-stock-toggle">
+            <input
+              type="checkbox"
+              [(ngModel)]="showLowStockOnly"
+              (change)="onFilterChange()"
+            />
+            Show low stock only (≤ 2)
+          </label>
+        </div>
+      </div>
+
       <div class="table-wrapper">
         <table *ngIf="items.length > 0; else emptyState">
           <thead>
@@ -124,3 +161,4 @@
     </div>
   </section>
 </div>
+
